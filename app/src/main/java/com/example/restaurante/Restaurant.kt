@@ -11,6 +11,7 @@ data class Restaurant(
     @Expose @SerializedName("calificacion") val calificacion: String,
     @Expose @SerializedName("año") val anio: String,
     @Expose @SerializedName("costo_promedio") val costo: String,
-    @Expose @SerializedName("imagen_logo") val image: String
-
+    @Expose @SerializedName("imagen_logo") val image: String,
+    @Expose @SerializedName("reseña") val resena: String,
+    @Expose @SerializedName("direccion") val direccion: String
 )

@@ -1,20 +1,16 @@
 package com.example.restaurante
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_restaurante.view.*
+import kotlin.coroutines.coroutineContext
 
-class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.MyViewHolder>(){
+/*class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.MyViewHolder>(){
 
     private var restaurantList : List<Restaurant>? = emptyList()
 
@@ -39,6 +35,10 @@ class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.MyViewHolder>()
             //holder.bind(restaurantList.image)
         }*/
         restaurantList?.let { holder.bind(it.get(position)) }
+        holder.itemView.setOnClickListener {
+
+        }
+
 
     }
 
@@ -61,7 +61,36 @@ class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.MyViewHolder>()
             //Picasso.get().load(text).into(iv)
             itemView.star.setImageResource(R.drawable.ic_star)
             //itemView.item_image_carddescriptive.setImageResource(R.drawable.restaurante)
+
         }
     }
-}
+}*/
 
+class RestaurantAdapter(private val restaurants: ArrayList<Restaurant>, val onItemListener: OnItemListener): RecyclerView.Adapter<RestaurantViewHolder>(){
+
+    private var restaurantList : List<Restaurant>? = emptyList()
+
+    interface OnItemListener{
+        fun clickRestaurant(restaurant: Restaurant)
+    }
+
+    fun setRestaurantList(restaurantList : List<Restaurant>){
+        this.restaurantList = restaurantList
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return RestaurantViewHolder(layoutInflater.inflate(R.layout.item_restaurante,parent,false),onItemListener)
+    }
+
+    override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
+        val item = restaurants[position]
+        holder.bind(item)
+    }
+
+    override fun getItemCount(): Int {
+        return restaurants.size
+    }
+
+}
