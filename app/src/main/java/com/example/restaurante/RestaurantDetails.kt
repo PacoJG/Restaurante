@@ -13,9 +13,9 @@ class RestaurantDetails : AppCompatActivity() {
 
     private lateinit var name:String
     private lateinit var image: String
-    //private lateinit var image1: String
-    //private lateinit var image2: String
-    //private lateinit var image3: String
+    private lateinit var image1: String
+    private lateinit var image2: String
+    private lateinit var image3: String
     private lateinit var direccion: String
     private lateinit var resena: String
 
@@ -48,6 +48,24 @@ class RestaurantDetails : AppCompatActivity() {
             }else{
                 savedInstanceState?.getSerializable("reseña") as String
             }
+
+            image1 = if(bundle != null){
+                bundle.getString("imagen1","imagen1")
+            }else{
+                savedInstanceState?.getSerializable("imagen1") as String
+            }
+
+            image2 = if(bundle != null){
+                bundle.getString("imagen2","imagen2")
+            }else{
+                savedInstanceState?.getSerializable("imagen2") as String
+            }
+
+            image3 = if(bundle != null){
+                bundle.getString("imagen3","imagen3")
+            }else{
+                savedInstanceState?.getSerializable("imagen3") as String
+            }
         }
 
         findViewById<TextView>(R.id.tvName).text = name.toString()
@@ -57,10 +75,10 @@ class RestaurantDetails : AppCompatActivity() {
         Glide.with(this).load(image).into(imageRestaurant)
         findViewById<TextView>(R.id.tvOpinion).text = resena.toString()
         var photo2 = findViewById<ImageView>(R.id.imageView2)
-        Glide.with(this).load(image).into(photo2)
+        Glide.with(this).load(image1).into(photo2)
         var photo3 = findViewById<ImageView>(R.id.imageView3)
-        Glide.with(this).load(image).into(photo3)
+        Glide.with(this).load(image2).into(photo3)
         var photo4 = findViewById<ImageView>(R.id.imageView4)
-        Glide.with(this).load(image).into(photo4)
+        Glide.with(this).load(image3).into(photo4)
     }
 }

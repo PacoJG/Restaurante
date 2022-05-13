@@ -89,6 +89,9 @@ class MainActivity : AppCompatActivity(), RestaurantAdapter.OnItemListener {
         intent.putExtra("imagen_logo",restaurant.image)
         intent.putExtra("reseña",restaurant.resena)
         intent.putExtra("direccion",restaurant.direccion)
+        intent.putExtra("imagen1",restaurant.imagen1)
+        intent.putExtra("imagen2",restaurant.imagen2)
+        intent.putExtra("imagen3",restaurant.imagen3)
         startActivity(intent)
     }
 

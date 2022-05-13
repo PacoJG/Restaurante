@@ -13,5 +13,8 @@ data class Restaurant(
     @Expose @SerializedName("costo_promedio") val costo: String,
     @Expose @SerializedName("imagen_logo") val image: String,
     @Expose @SerializedName("reseña") val resena: String,
-    @Expose @SerializedName("direccion") val direccion: String
+    @Expose @SerializedName("direccion") val direccion: String,
+    @Expose @SerializedName("imagen1") val imagen1: String,
+    @Expose @SerializedName("imagen2") val imagen2: String,
+    @Expose @SerializedName("imagen3") val imagen3: String
 )
